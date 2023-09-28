@@ -31,7 +31,36 @@ async function post(req, res) {
     })
 }
 
+async function put(req, res) {
+
+    const { id } = req.params
+
+    const product = await ProductsModel.findOneAndUpdate({ _id: id }, req.body, {new: true})
+
+    res.send ({
+        message:'success',
+        product,
+    })
+
+
+    /* Se não for obrigatório retornar o ítem que está alterando, pode esccrever o cód. dessa forma
+    async function put(req, res) {
+
+        const { id } = req.params
+
+        const product = await ProductsModel.findOne ({ _id: id })
+        
+        await product.updateOne(req.body)
+
+     res.send ({
+        message:'success',
+        product,
+    })*/
+
+}
+
 module.exports = {
     get,
     post,
+    put,
 }
