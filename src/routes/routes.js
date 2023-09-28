@@ -1,10 +1,7 @@
 const router= require ('express').Router()
 
-router.get('/clientes', (req, res) => {
+const ProductController= require ('../controllers/products')
 
-    res.send({
-        ok: 123
-    })
-})
+router.get('/products', ProductController.get)
 
 module.exports = router
